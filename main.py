@@ -28,7 +28,7 @@ except ImportError:
 
 if __name__ == "__main__":
     # Railway provides PORT environment variable
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 8000))
     
     print(f"🚀 Starting TradingBot CI on port {port}")
     print(f"📁 Working directory: {os.getcwd()}")
