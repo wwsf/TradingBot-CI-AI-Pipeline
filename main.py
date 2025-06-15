@@ -1,16 +1,46 @@
-# This is a sample Python script.
+import os
+import sys
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+# Add the current directory to Python path so we can import our modules
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, current_dir)
 
+# Add webapp directory to path since dashboard.py is there
+webapp_dir = os.path.join(current_dir, 'webapp')
+if os.path.exists(webapp_dir):
+    sys.path.insert(0, webapp_dir)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+try:
+    # Try to import from webapp folder first
+    from webapp.dashboard import app
 
+    print("✅ Imported dashboard from webapp folder")
+except ImportError:
+    try:
+        # If that fails, try importing from root
+        from dashboard import app
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+        print("✅ Imported dashboard from root folder")
+    except ImportError:
+        print("❌ Could not import dashboard module")
+        print("Available files:", os.listdir('.'))
+        if os.path.exists('webapp'):
+            print("Files in webapp:", os.listdir('webapp'))
+        sys.exit(1)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    print("🚀 Starting TradingBot CI Dashboard")
+    print("=" * 50)
+
+    # Get port from environment (for deployment) or use 5001 for local
+    port = int(os.environ.get('PORT', 5001))
+
+    print(f"🌐 Dashboard will run on port {port}")
+    print("🔗 Local URL: http://localhost:5001")
+
+    # Run the Flask app
+    app.run(
+        host='0.0.0.0',  # Allow external connections
+        port=port,
+        debug=False  # Turn off debug mode for production
+    )
