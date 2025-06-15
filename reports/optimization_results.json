@@ -1,0 +1,532 @@
+{
+  "strategy_class": "MovingAverageStrategy",
+  "optimization_metric": "sharpe_ratio",
+  "best_parameters": {
+    "long_window": 74,
+    "short_window": 41
+  },
+  "best_score": 0.8178455757482687,
+  "optimization_history": [
+    {
+      "parameters": {
+        "long_window": 74,
+        "short_window": 49
+      },
+      "score": 0.6609361876980714,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 49,
+          "long_window": 74
+        },
+        "total_return": 0.19551588323957492,
+        "annual_return": 0.19809085218454725,
+        "volatility": 0.2997125227390924,
+        "sharpe_ratio": 0.6609361876980714,
+        "max_drawdown": -0.22200688143273417,
+        "win_rate": 0.5344827586206896,
+        "total_trades": 2,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 1.1596219112156718
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 182,
+        "short_window": 17
+      },
+      "score": -0.47426019444398676,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 17,
+          "long_window": 182
+        },
+        "total_return": -0.12279990751532732,
+        "annual_return": -0.1241835247336901,
+        "volatility": 0.2618468220367522,
+        "sharpe_ratio": -0.47426019444398676,
+        "max_drawdown": -0.22200688143273428,
+        "win_rate": 0.43283582089552236,
+        "total_trades": 2,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.8373475342974346
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 74,
+        "short_window": 17
+      },
+      "score": -0.5878535540448053,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 17,
+          "long_window": 74
+        },
+        "total_return": -0.17439783389230035,
+        "annual_return": -0.1763019031113109,
+        "volatility": 0.2999078629332798,
+        "sharpe_ratio": -0.5878535540448053,
+        "max_drawdown": -0.309279454256581,
+        "win_rate": 0.47701149425287354,
+        "total_trades": 6,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.7852291559198138
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 38,
+        "short_window": 9
+      },
+      "score": -1.5347344838016403,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 9,
+          "long_window": 38
+        },
+        "total_return": -0.46952269737852625,
+        "annual_return": -0.4735592014684783,
+        "volatility": 0.3085609963590838,
+        "sharpe_ratio": -1.5347344838016403,
+        "max_drawdown": -0.49382826766379884,
+        "win_rate": 0.42857142857142855,
+        "total_trades": 13,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.4879718575626464
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 128,
+        "short_window": 21
+      },
+      "score": -0.8642598231395969,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 21,
+          "long_window": 128
+        },
+        "total_return": -0.2439547995760052,
+        "annual_return": -0.246497876218441,
+        "volatility": 0.28521269833299445,
+        "sharpe_ratio": -0.8642598231395969,
+        "max_drawdown": -0.3303291103586541,
+        "win_rate": 0.4628099173553719,
+        "total_trades": 4,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.7150331828126837
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 38,
+        "short_window": 33
+      },
+      "score": -0.6143081382049279,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 33,
+          "long_window": 38
+        },
+        "total_return": -0.18879158868585555,
+        "annual_return": -0.19083394542781285,
+        "volatility": 0.3106485712291708,
+        "sharpe_ratio": -0.6143081382049279,
+        "max_drawdown": -0.29801347207106593,
+        "win_rate": 0.5,
+        "total_trades": 13,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.7706971136033118
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 110,
+        "short_window": 37
+      },
+      "score": 0.5744687972536455,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 37,
+          "long_window": 110
+        },
+        "total_return": 0.16368477608831622,
+        "annual_return": 0.1658120762565003,
+        "volatility": 0.2886354786355597,
+        "sharpe_ratio": 0.5744687972536455,
+        "max_drawdown": -0.2220068814327342,
+        "win_rate": 0.5362318840579711,
+        "total_trades": 2,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 1.1273431352876249
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 200,
+        "short_window": 9
+      },
+      "score": 0.007096858902445454,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 9,
+          "long_window": 200
+        },
+        "total_return": 0.001738390169768067,
+        "annual_return": 0.0017593530432631344,
+        "volatility": 0.24790587884689266,
+        "sharpe_ratio": 0.007096858902445454,
+        "max_drawdown": -0.2220068814327339,
+        "win_rate": 0.46938775510204084,
+        "total_trades": 1,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.9632904120743878
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 74,
+        "short_window": 41
+      },
+      "score": 0.8178455757482687,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 41,
+          "long_window": 74
+        },
+        "total_return": 0.2417719976946089,
+        "annual_return": 0.2450158966589624,
+        "volatility": 0.29958699285594453,
+        "sharpe_ratio": 0.8178455757482687,
+        "max_drawdown": -0.2220068814327339,
+        "win_rate": 0.5517241379310345,
+        "total_trades": 2,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 1.206546955690087
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 38,
+        "short_window": 5
+      },
+      "score": -1.4167624165091515,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 5,
+          "long_window": 38
+        },
+        "total_return": -0.4339615789198724,
+        "annual_return": -0.43782937240953534,
+        "volatility": 0.3090351404777734,
+        "sharpe_ratio": -1.4167624165091515,
+        "max_drawdown": -0.45642334656080064,
+        "win_rate": 0.44285714285714284,
+        "total_trades": 16,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.5237016866215893
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 146,
+        "short_window": 9
+      },
+      "score": -0.8033905191539302,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 9,
+          "long_window": 146
+        },
+        "total_return": -0.22404381377652294,
+        "annual_return": -0.2264116207773561,
+        "volatility": 0.2818201302845789,
+        "sharpe_ratio": -0.8033905191539302,
+        "max_drawdown": -0.26632478538286253,
+        "win_rate": 0.4368932038834951,
+        "total_trades": 4,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.7351194382537686
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 182,
+        "short_window": 25
+      },
+      "score": -0.1984708134510178,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 25,
+          "long_window": 182
+        },
+        "total_return": -0.05138010426883832,
+        "annual_return": -0.051982767459688106,
+        "volatility": 0.2619164327278648,
+        "sharpe_ratio": -0.1984708134510178,
+        "max_drawdown": -0.22200688143273425,
+        "win_rate": 0.4626865671641791,
+        "total_trades": 2,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.9095482915714366
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 56,
+        "short_window": 21
+      },
+      "score": 0.38990282311736424,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 21,
+          "long_window": 56
+        },
+        "total_return": 0.11694463114540721,
+        "annual_return": 0.11843394448938738,
+        "volatility": 0.303752467198058,
+        "sharpe_ratio": 0.38990282311736424,
+        "max_drawdown": -0.22200688143273428,
+        "win_rate": 0.53125,
+        "total_trades": 4,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 1.079965003520512
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 92,
+        "short_window": 25
+      },
+      "score": -0.5618752886096898,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 25,
+          "long_window": 92
+        },
+        "total_return": -0.1624701931891841,
+        "annual_return": -0.1642573525812544,
+        "volatility": 0.2923377409739705,
+        "sharpe_ratio": -0.5618752886096898,
+        "max_drawdown": -0.30508298121152516,
+        "win_rate": 0.48717948717948717,
+        "total_trades": 4,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.7972737064498703
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 128,
+        "short_window": 37
+      },
+      "score": -0.41138266657348904,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 37,
+          "long_window": 128
+        },
+        "total_return": -0.11616487705304024,
+        "annual_return": -0.11747884101097839,
+        "volatility": 0.28557071203191314,
+        "sharpe_ratio": -0.41138266657348904,
+        "max_drawdown": -0.222006881432734,
+        "win_rate": 0.49586776859504134,
+        "total_trades": 2,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.8440522180201463
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 74,
+        "short_window": 21
+      },
+      "score": 0.6943452877303031,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 21,
+          "long_window": 74
+        },
+        "total_return": 0.2053706625588987,
+        "annual_return": 0.20808634027463802,
+        "volatility": 0.2996871210213537,
+        "sharpe_ratio": 0.6943452877303031,
+        "max_drawdown": -0.22200688143273403,
+        "win_rate": 0.5402298850574713,
+        "total_trades": 2,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 1.1696173993057628
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 164,
+        "short_window": 29
+      },
+      "score": -0.05272477724297126,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 29,
+          "long_window": 164
+        },
+        "total_return": -0.014016620769581434,
+        "annual_return": -0.014184292363453643,
+        "volatility": 0.26902517383977287,
+        "sharpe_ratio": -0.05272477724297126,
+        "max_drawdown": -0.22200688143273428,
+        "win_rate": 0.49411764705882355,
+        "total_trades": 2,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.947346766667671
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 74,
+        "short_window": 9
+      },
+      "score": 0.0034924103703747387,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 9,
+          "long_window": 74
+        },
+        "total_return": 0.0010353776720457564,
+        "annual_return": 0.001047858635280896,
+        "volatility": 0.30003880533903576,
+        "sharpe_ratio": 0.0034924103703747387,
+        "max_drawdown": -0.25428314784215894,
+        "win_rate": 0.5057471264367817,
+        "total_trades": 6,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.9625789176664056
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 200,
+        "short_window": 45
+      },
+      "score": -0.8655958420421149,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 45,
+          "long_window": 200
+        },
+        "total_return": -0.21203163903451627,
+        "annual_return": -0.21429069292773217,
+        "volatility": 0.2475643741797295,
+        "sharpe_ratio": -0.8655958420421149,
+        "max_drawdown": -0.2875450563758421,
+        "win_rate": 0.5306122448979592,
+        "total_trades": 2,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.7472403661033925
+      }
+    },
+    {
+      "parameters": {
+        "long_window": 92,
+        "short_window": 5
+      },
+      "score": -0.06495070187348295,
+      "metrics": {
+        "strategy_name": "Moving Average Crossover",
+        "symbol": "AAPL",
+        "start_date": "2024-06-02",
+        "end_date": "2025-06-02",
+        "parameters": {
+          "short_window": 5,
+          "long_window": 92
+        },
+        "total_return": -0.018771431319859255,
+        "annual_return": -0.01899543147248861,
+        "volatility": 0.2924592179079094,
+        "sharpe_ratio": -0.06495070187348295,
+        "max_drawdown": -0.2257787380811864,
+        "win_rate": 0.5128205128205128,
+        "total_trades": 8,
+        "benchmark_return": 0.03999025342901841,
+        "outperformance": 0.9425356275586361
+      }
+    }
+  ],
+  "timestamp": "2025-06-02T22:31:08.156044"
+}

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradingBot CI - AI-Powered Trading Strategy DevOps</title>
+
+    <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Plotly for Charts -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --light-bg: #f8f9fa;
+            --dark-bg: #34495e;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-bg));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+            height: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-change {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .status-success {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success-color);
+        }
+
+        .status-danger {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger-color);
+        }
+
+        .status-warning {
+            background-color: rgba(243, 156, 18, 0.1);
+            color: var(--warning-color);
+        }
+
+        .pipeline-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .pipeline-item.success {
+            border-left-color: var(--success-color);
+        }
+
+        .pipeline-item.failed {
+            border-left-color: var(--danger-color);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .strategy-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .strategy-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #e9ecef;
+            transition: all 0.2s ease;
+        }
+
+        .strategy-item:hover {
+            border-color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-robot me-2"></i>
+                TradingBot CI
+            </a>
+            <div class="navbar-text text-light">
+                <small>AI-Powered Trading Strategy DevOps Platform</small>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-4">
+
+        <!-- Header Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="section-title">
+                    <i class="fas fa-chart-line me-2"></i>
+                    Trading Strategy Dashboard
+                </h1>
+                <p class="text-muted">Monitor your AI-enhanced CI/CD pipeline for quantitative trading strategies</p>
+            </div>
+        </div>
+
+        <!-- Summary Statistics -->
+        <div class="row mb-4">
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="stat-card text-center">
+                    <div class="stat-label">Active Strategies</div>
+                    <div class="stat-value text-primary" id="total-strategies">
+                        <span class="loading-spinner"></span>
+                    </div>
+                    <div class="stat-change text-success" id="strategies-change">
+                        <i class="fas fa-arrow-up"></i> +2 this week
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="stat-card text-center">
+                    <div class="stat-label">Success Rate</div>
+                    <div class="stat-value text-success" id="success-rate">
+                        <span class="loading-spinner"></span>
+                    </div>
+                    <div class="stat-change text-success" id="success-rate-change">
+                        <i class="fas fa-arrow-up"></i> +5% vs last month
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="stat-card text-center">
+                    <div class="stat-label">Avg Annual Return</div>
+                    <div class="stat-value text-warning" id="avg-return">
+                        <span class="loading-spinner"></span>
+                    </div>
+                    <div class="stat-change text-success" id="return-change">
+                        <i class="fas fa-arrow-up"></i> +3.2% optimized by AI
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="stat-card text-center">
+                    <div class="stat-label">Avg Sharpe Ratio</div>
+                    <div class="stat-value text-info" id="avg-sharpe">
+                        <span class="loading-spinner"></span>
+                    </div>
+                    <div class="stat-change text-success" id="sharpe-change">
+                        <i class="fas fa-arrow-up"></i> Above benchmark
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Strategy Performance Chart -->
+            <div class="col-lg-8">
+                <div class="chart-container">
+                    <h3 class="section-title">
+                        <i class="fas fa-chart-bar me-2"></i>
+                        Strategy Performance Comparison
+                    </h3>
+                    <div id="performance-chart" style="height: 400px;">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div class="text-center">
+                                <div class="loading-spinner mb-2"></div>
+                                <div class="text-muted">Loading performance data...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3 class="section-title">
+                        <i class="fas fa-brain me-2"></i>
+                        AI Optimization Progress
+                    </h3>
+                    <div id="optimization-chart" style="height: 350px;">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div class="text-center">
+                                <div class="loading-spinner mb-2"></div>
+                                <div class="text-muted">Loading optimization data...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- CI/CD Pipeline Status -->
+                <div class="chart-container">
+                    <h3 class="section-title">
+                        <i class="fas fa-cogs me-2"></i>
+                        CI/CD Pipeline Status
+                    </h3>
+                    <div id="pipeline-status">
+                        <div class="text-center">
+                            <div class="loading-spinner mb-2"></div>
+                            <div class="text-muted">Loading pipeline status...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Strategies -->
+                <div class="chart-container">
+                    <h3 class="section-title">
+                        <i class="fas fa-list me-2"></i>
+                        Recent Strategy Tests
+                    </h3>
+                    <div class="strategy-list" id="recent-strategies">
+                        <div class="text-center">
+                            <div class="loading-spinner mb-2"></div>
+                            <div class="text-muted">Loading recent tests...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deployment Status -->
+                <div class="chart-container">
+                    <h3 class="section-title">
+                        <i class="fas fa-rocket me-2"></i>
+                        Deployment Status
+                    </h3>
+                    <div id="deployment-status">
+                        <div class="text-center">
+                            <div class="loading-spinner mb-2"></div>
+                            <div class="text-muted">Loading deployment info...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk-Return Chart -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="chart-container">
+                    <h3 class="section-title">
+                        <i class="fas fa-shield-alt me-2"></i>
+                        Risk-Return Analysis
+                    </h3>
+                    <div id="risk-return-chart" style="height: 400px;">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div class="text-center">
+                                <div class="loading-spinner mb-2"></div>
+                                <div class="text-muted">Loading risk analysis...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Dashboard JavaScript
+        class TradingBotDashboard {
+            constructor() {
+                this.initializeDashboard();
+                this.loadDashboardData();
+
+                // Refresh data every 30 seconds
+                setInterval(() => this.loadDashboardData(), 30000);
+            }
+
+            initializeDashboard() {
+                console.log("🚀 TradingBot CI Dashboard initialized");
+            }
+
+            async loadDashboardData() {
+                try {
+                    // Load overview data
+                    const overviewResponse = await fetch('/api/overview');
+                    const overviewData = await overviewResponse.json();
+                    this.updateOverviewStats(overviewData);
+                    this.updatePipelineStatus(overviewData.pipeline_status);
+                    this.updateRecentStrategies(overviewData.latest_results);
+
+                    // Load performance charts
+                    const performanceResponse = await fetch('/api/strategy_performance');
+                    const performanceData = await performanceResponse.json();
+                    this.updatePerformanceCharts(performanceData);
+
+                    // Load optimization progress
+                    const optimizationResponse = await fetch('/api/optimization_progress');
+                    const optimizationData = await optimizationResponse.json();
+                    this.updateOptimizationChart(optimizationData);
+
+                    // Load deployment status
+                    const deploymentResponse = await fetch('/api/deployment_status');
+                    const deploymentData = await deploymentResponse.json();
+                    this.updateDeploymentStatus(deploymentData);
+
+                } catch (error) {
+                    console.error('Error loading dashboard data:', error);
+                    this.showError('Failed to load dashboard data');
+                }
+            }
+
+            updateOverviewStats(data) {
+                const summary = data.summary || {};
+
+                document.getElementById('total-strategies').textContent = summary.total_strategies || 0;
+                document.getElementById('success-rate').textContent = `${(summary.success_rate || 0).toFixed(1)}%`;
+                document.getElementById('avg-return').textContent = `${(summary.avg_annual_return * 100 || 0).toFixed(1)}%`;
+                document.getElementById('avg-sharpe').textContent = (summary.avg_sharpe_ratio || 0).toFixed(2);
+            }
+
+            updatePipelineStatus(pipelineData) {
+                const container = document.getElementById('pipeline-status');
+
+                if (!pipelineData || !pipelineData.latest_pipeline) {
+                    container.innerHTML = '<div class="text-muted">No pipeline data available</div>';
+                    return;
+                }
+
+                const latest = pipelineData.latest_pipeline;
+                const statusClass = latest.status === 'success' ? 'success' :
+                                  latest.status === 'failed' ? 'danger' : 'warning';
+
+                container.innerHTML = `
+                    <div class="pipeline-item ${latest.status}">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <strong>Pipeline #${latest.id}</strong>
+                            <span class="status-badge status-${statusClass}">${latest.status}</span>
+                        </div>
+                        <div class="text-muted small mb-1">${latest.commit_message}</div>
+                        <div class="text-muted small">
+                            <i class="fas fa-clock me-1"></i>${latest.duration}
+                            <i class="fas fa-user ms-3 me-1"></i>${latest.author}
+                        </div>
+                    </div>
+
+                    <h6 class="mt-3 mb-2">Recent Pipelines</h6>
+                    ${pipelineData.recent_pipelines.map(pipeline => `
+                        <div class="pipeline-item ${pipeline.status}" style="padding: 0.75rem;">
+                            <div class="d-flex justify-content-between">
+                                <span class="small">#${pipeline.id}</span>
+                                <span class="status-badge status-${pipeline.status === 'success' ? 'success' : 'danger'}">${pipeline.status}</span>
+                            </div>
+                            <div class="text-muted small">${pipeline.commit_message}</div>
+                        </div>
+                    `).join('')}
+                `;
+            }
+
+            updateRecentStrategies(strategies) {
+                const container = document.getElementById('recent-strategies');
+
+                if (!strategies || strategies.length === 0) {
+                    container.innerHTML = '<div class="text-muted">No recent strategy tests</div>';
+                    return;
+                }
+
+                container.innerHTML = strategies.map(strategy => {
+                    const isValid = strategy.validation && strategy.validation.is_valid;
+                    const statusClass = isValid ? 'success' : 'danger';
+
+                    return `
+                        <div class="strategy-item">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <strong>${strategy.strategy_name || 'Unknown Strategy'}</strong>
+                                <span class="status-badge status-${statusClass}">
+                                    ${isValid ? 'PASSED' : 'FAILED'}
+                                </span>
+                            </div>
+                            <div class="row small text-muted">
+                                <div class="col-6">Return: ${(strategy.annual_return * 100 || 0).toFixed(1)}%</div>
+                                <div class="col-6">Sharpe: ${(strategy.sharpe_ratio || 0).toFixed(2)}</div>
+                            </div>
+                            <div class="small text-muted mt-1">
+                                <i class="fas fa-chart-line me-1"></i>${strategy.symbol || 'N/A'}
+                                <i class="fas fa-calendar ms-2 me-1"></i>${strategy.start_date || 'N/A'}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            updatePerformanceCharts(data) {
+                if (data.error) {
+                    document.getElementById('performance-chart').innerHTML =
+                        `<div class="text-center text-muted">No performance data available</div>`;
+                    document.getElementById('risk-return-chart').innerHTML =
+                        `<div class="text-center text-muted">No risk data available</div>`;
+                    return;
+                }
+
+                // Update performance chart
+                if (data.performance_chart) {
+                    Plotly.newPlot('performance-chart', data.performance_chart.data, data.performance_chart.layout);
+                }
+
+                // Update risk-return chart
+                if (data.risk_return_chart) {
+                    Plotly.newPlot('risk-return-chart', data.risk_return_chart.data, data.risk_return_chart.layout);
+                }
+            }
+
+            updateOptimizationChart(data) {
+                if (data.error) {
+                    document.getElementById('optimization-chart').innerHTML =
+                        `<div class="text-center text-muted">No optimization data available</div>`;
+                    return;
+                }
+
+                if (data.optimization_chart) {
+                    Plotly.newPlot('optimization-chart', data.optimization_chart.data, data.optimization_chart.layout);
+                }
+            }
+
+            updateDeploymentStatus(data) {
+                const container = document.getElementById('deployment-status');
+
+                if (!data.deployments || data.deployments.length === 0) {
+                    container.innerHTML = '<div class="text-muted">No active deployments</div>';
+                    return;
+                }
+
+                container.innerHTML = data.deployments.map(deployment => `
+                    <div class="strategy-item">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <strong>${deployment.environment}</strong>
+                            <span class="status-badge status-${deployment.status === 'active' ? 'success' : 'warning'}">
+                                ${deployment.status.toUpperCase()}
+                            </span>
+                        </div>
+                        <div class="text-muted small mb-1">${deployment.strategy}</div>
+                        <div class="row small text-muted">
+                            <div class="col-6">Daily: ${(deployment.performance.daily_return * 100).toFixed(2)}%</div>
+                            <div class="col-6">Sharpe: ${deployment.performance.running_sharpe.toFixed(2)}</div>
+                        </div>
+                        <div class="small text-muted mt-1">
+                            <i class="fas fa-clock me-1"></i>
+                            Deployed ${new Date(deployment.deployed_at).toLocaleDateString()}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            showError(message) {
+                console.error(message);
+                // Could implement toast notifications here
+            }
+        }
+
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            new TradingBotDashboard();
+        });
+    </script>
+</body>
+</html>

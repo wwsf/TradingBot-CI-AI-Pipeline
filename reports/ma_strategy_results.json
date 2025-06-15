@@ -1,0 +1,19 @@
+{
+  "strategy_name": "Moving Average Crossover",
+  "symbol": "AAPL",
+  "start_date": "2024-06-02",
+  "end_date": "2025-06-02",
+  "parameters": {
+    "short_window": 20,
+    "long_window": 50
+  },
+  "total_return": -0.1993673764428121,
+  "annual_return": -0.2015093630488739,
+  "volatility": 0.3040959949629462,
+  "sharpe_ratio": -0.6626504997983536,
+  "max_drawdown": -0.2820072401656865,
+  "win_rate": 0.5,
+  "total_trades": 8,
+  "benchmark_return": 0.03999033559778731,
+  "outperformance": 0.7600216159870278
+}
