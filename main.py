@@ -1,46 +1,41 @@
 import os
 import sys
 
-# Add the current directory to Python path so we can import our modules
+# Add current directory to Python path
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, current_dir)
 
 # Add webapp directory to path since dashboard.py is there
 webapp_dir = os.path.join(current_dir, 'webapp')
-if os.path.exists(webapp_dir):
-    sys.path.insert(0, webapp_dir)
+sys.path.insert(0, webapp_dir)
 
 try:
-    # Try to import from webapp folder first
+    # Import from webapp folder (where dashboard.py actually is)
     from webapp.dashboard import app
-
-    print("✅ Imported dashboard from webapp folder")
+    print("✅ Successfully imported dashboard from webapp folder")
 except ImportError:
     try:
-        # If that fails, try importing from root
+        # Fallback: try direct import if in same directory
         from dashboard import app
-
-        print("✅ Imported dashboard from root folder")
-    except ImportError:
-        print("❌ Could not import dashboard module")
-        print("Available files:", os.listdir('.'))
+        print("✅ Successfully imported dashboard from current directory")
+    except ImportError as e:
+        print(f"❌ Could not import dashboard module: {e}")
+        print(f"Current directory: {os.getcwd()}")
+        print(f"Available files: {os.listdir('.')}")
         if os.path.exists('webapp'):
-            print("Files in webapp:", os.listdir('webapp'))
+            print(f"Files in webapp: {os.listdir('webapp')}")
         sys.exit(1)
 
 if __name__ == "__main__":
-    print("🚀 Starting TradingBot CI Dashboard")
-    print("=" * 50)
-
-    # Get port from environment (for deployment) or use 5001 for local
-    port = int(os.environ.get('PORT', 5001))
-
-    print(f"🌐 Dashboard will run on port {port}")
-    print("🔗 Local URL: http://localhost:5001")
-
-    # Run the Flask app
+    # Railway provides PORT environment variable
+    port = int(os.environ.get('PORT', 5000))
+    
+    print(f"🚀 Starting TradingBot CI on port {port}")
+    print(f"📁 Working directory: {os.getcwd()}")
+    
+    # Run the app
     app.run(
-        host='0.0.0.0',  # Allow external connections
-        port=port,
-        debug=False  # Turn off debug mode for production
+        host='0.0.0.0',  # Railway requires this
+        port=port,       # Railway provides this
+        debug=False      # No debug in production
     )
